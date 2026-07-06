@@ -116,7 +116,7 @@ a { text-decoration: none; color: inherit; }
 
 /* ── Hero ──────────────────────────────────────── */
 .hero {
-  padding: 160px 0 96px;
+  padding: 100px 0 60px;
 }
 .hero__eyebrow {
   display: inline-flex;
