@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoMineral — Sistem Identifikasi Mineral</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Caslon+Text:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet" />
+
+  <!-- PapaParse -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── Navbar ──────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="navbar__inner">
+    <div class="navbar__brand">
+      <div class="navbar__icon"><i class="ti ti-diamond"></i></div>
+      <span class="navbar__logo">GeoMineral</span>
+    </div>
+    <div class="navbar__links">
+      <a href="#identifikasi" class="nav-link">Identifikasi</a>
+      <a href="#tentang" class="nav-link">Tentang</a>
+      <a href="#referensi" class="nav-link">Referensi</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__eyebrow"><span>SISTEM PENILAIAN MULTI-KRITERIA</span></div>
+    <h1>Analisis Mineral Geologi dalam Genggaman Anda.</h1>
+    <p>Masukkan parameter sifat optik dan sifat fisik mineral, kemudian GeoMineral menghitung tingkat kecocokan menggunakan Multi-Criteria Scoring untuk menampilkan kandidat mineral yang paling sesuai.</p>
+    <div class="hero__ctas">
+      <a href="#identifikasi" class="btn btn--primary">
+        Identifikasi Sekarang <i class="ti ti-arrow-right"></i>
+      </a>
+      <a href="#tentang" class="btn btn--secondary">LIHAT CARA KERJA</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Main ────────────────────────────────────────── -->
+<main>
+  <div class="container">
+
+    <!-- ── Identifikasi ────────────────────────────── -->
+    <section class="section" id="identifikasi">
+      <div class="section__header">
+        <h2>Amati, Isi, Temukan</h2>
+        <p>Lengkapi parameter mineral yang diketahui. Sistem akan menghitung tingkat kecocokan berdasarkan 10 parameter dan menampilkan kandidat mineral dengan skor tertinggi.</p>
+      </div>
+
+      <div class="identify-grid">
+        <!-- Left: Form -->
+        <div>
+
+          <!-- Sifat Optik -->
+          <div class="card">
+            <div class="card__header">
+              <div class="card__title-row">
+                <i class="ti ti-eye"></i>
+                <h3>Sifat Optik</h3>
+              </div>
+              <span class="badge badge--required">Wajib</span>
+            </div>
+
+            <div class="form-grid-2">
+
+              <!-- Kilap -->
+              <div class="field field--full">
+                <label for="kilap">Kilap (Luster)</label>
+                <select id="kilap" required>
+                  <option value="" disabled selected hidden>Pilih kilap...</option>
+                  <option>Metalik</option>
+                  <option>Kaca</option>
+                  <option>Intan</option>
+                  <option>Mutiara</option>
+                  <option>Sutera</option>
+                  <option>Lemak</option>
+                  <option>Damar</option>
+                  <option>Tanah</option>
+                </select>
+              </div>
+
+              <!-- Warna -->
+              <div class="field field--full">
+                <label>Warna Mineral</label>
+
+                <div class="color-grid">
+
+                  <select id="warna_primer" required>
+                    <option value="" disabled selected hidden>Warna Primer</option>
+                    <option>Putih / Tidak berwarna</option>
+                    <option>Hitam</option>
+                    <option>Abu-abu</option>
+                    <option>Perak</option>
+                    <option>Kuning</option>
+                    <option>Emas</option>
+                    <option>Cokelat</option>
+                    <option>Merah</option>
+                    <option>Hijau</option>
+                    <option>Biru</option>
+                    <option>Ungu</option>
+                  </select>
+
+                  <select id="warna_sekunder">
+                    <option value="" disabled selected hidden>Warna Sekunder (Opsional)</option>
+                    <option>Putih / Tidak berwarna</option>
+                    <option>Hitam</option>
+                    <option>Abu-abu</option>
+                    <option>Perak</option>
+                    <option>Kuning</option>
+                    <option>Emas</option>
+                    <option>Cokelat</option>
+                    <option>Merah</option>
+                    <option>Hijau</option>
+                    <option>Biru</option>
+                    <option>Ungu</option>
+                  </select>
+
+                </div>
+              </div>
+
+              <!-- Cerat -->
+              <div class="field">
+                <label for="cerat">Cerat (Goresan)</label>
+                <select id="cerat" required>
+                  <option value="" disabled selected hidden>Pilih cerat...</option>
+                  <option>Putih / Tidak berwarna</option>
+                  <option>Hitam</option>
+                  <option>Abu-abu</option>
+                  <option>Merah</option>
+                  <option>Kuning</option>
+                  <option>Hijau</option>
+                  <option>Biru</option>
+                </select>
+              </div>
+
+              <!-- Transparansi -->
+              <div class="field">
+                <label for="transparansi">Transparansi</label>
+                <select id="transparansi" required>
+                  <option value="" disabled selected hidden>Pilih transparansi...</option>
+                  <option>Transparan</option>
+                  <option>Translusen</option>
+                  <option>Opak</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Sifat Fisik -->
+          <div class="card">
+
+            <div class="card__header">
+              <div class="card__title-row">
+                <i class="ti ti-molecule"></i>
+                <h3>Sifat Fisik</h3>
+              </div>
+              <span class="badge badge--optional">Opsional</span>
+            </div>
+
+            <!-- Mohs -->
+            <div class="mohs-block">
+              <div class="mohs-block__header">
+                <span class="mohs-block__label">
+                  <i class="ti ti-ruler-measure"></i> Skala Kekerasan Mohs
+                </span>
+                <span class="mohs-block__val" id="mohs-display">tidak ditentukan</span>
+              </div>
+              <input
+                id="mohs"
+                class="mohs-slider"
+                type="range"
+                min="0" max="10" step="0.5" value="0"
+              />
+              <div class="mohs-scale">
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">1</span><span class="mohs-scale__name">Talk</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">2</span><span class="mohs-scale__name">Gipsum</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">3</span><span class="mohs-scale__name">Kalsit</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">4</span><span class="mohs-scale__name">Fluorit</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">5</span><span class="mohs-scale__name">Apatit</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">6</span><span class="mohs-scale__name">Ortoklas</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">7</span><span class="mohs-scale__name">Kuarsa</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">8</span><span class="mohs-scale__name">Topaz</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">9</span><span class="mohs-scale__name">Korundum</span></div>
+                <div class="mohs-scale__tick"><span class="mohs-scale__num">10</span><span class="mohs-scale__name">Berlian</span></div>
+              </div>
+            </div>
+
+            <!-- Physical props -->
+            <div class="form-grid-3">
+
+              <div class="field">
+                <label for="belahan">Belahan</label>
+                <select id="belahan">
+                  <option value="" selected hidden>Pilih belahan...</option>
+                  <option>Sempurna 1 arah</option>
+                  <option>Sempurna 2 arah</option>
+                  <option>Sempurna 3 arah</option>
+                  <option>Sempurna 6 arah</option>
+                  <option>Tidak sempurna</option>
+                  <option>Tidak ada</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="pecahan">Pecahan</label>
+                <select id="pecahan">
+                  <option value="" selected hidden>Pilih pecahan...</option>
+                  <option>Konkoidal</option>
+                  <option>Tidak rata</option>
+                  <option>Berserabut</option>
+                  <option>Hackly</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="bj">Massa Jenis (g/cm³)</label>
+                <select id="bj">
+                  <option value="" selected hidden>Pilih massa jenis...</option>
+                  <option>Ringan (&lt; 3)</option>
+                  <option>Sedang (3-4)</option>
+                  <option>Berat (4-6)</option>
+                  <option>Sangat berat (&gt; 6)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="magnet">Sifat Magnetik</label>
+                <select id="magnet">
+                  <option value="" selected hidden>Pilih sifat magnetik...</option>
+                  <option>Magnetik</option>
+                  <option>Tidak magnetik</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="hcl">Reaksi HCl</label>
+                <select id="hcl">
+                  <option value="" selected hidden>Pilih reaksi HCl...</option>
+                  <option>Bereaksi</option>
+                  <option>Tidak bereaksi</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="actions-row">
+              <button class="btn btn--primary btn--lg btn--grow" onclick="handleIdentify()">
+                <i class="ti ti-analyze icon-lg"></i>
+                Identifikasi Sekarang
+              </button>
+              <button class="btn btn--reset" onclick="resetForm()" title="Reset semua input">
+                <i class="ti ti-refresh"></i> Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Results (full-width below form) -->
+          <div id="results"></div>
+
+        </div>
+
+        <!-- Right: Sidebar -->
+        <div class="sidebar">
+          <div class="results-panel">
+            <div class="results-panel__title">
+              <i class="ti ti-layout-dashboard"></i>
+              <h3>Panduan Parameter</h3>
+            </div>
+            <div class="guide-list">
+              <div class="guide-item">
+                <p class="guide-item__label">Sifat Optik (Wajib)</p>
+                <p class="guide-item__text">Kilap, warna, cerat, dan transparansi merupakan parameter utama dalam proses identifikasi. Lengkapi keempat parameter untuk memperoleh hasil yang lebih akurat.</p>
+              </div>
+              <div class="guide-item">
+                <p class="guide-item__label">Kekerasan Mohs</p>
+                <p class="guide-item__text">Geser slider ke nilai kekerasan mineral yang diamati. Toleransi pencocokan menggunakan rentang ±0,5 skala Mohs. Geser ke nilai 0 jika parameter tidak diketahui.</p>
+              </div>
+              <div class="guide-item">
+                <p class="guide-item__label">Sifat Fisik (Opsional)</p>
+                <p class="guide-item__text">Belahan, pecahan, massa jenis, sifat magnetik, dan reaksi HCl digunakan untuk meningkatkan tingkat kecocokan hasil identifikasi. Kosongkan jika parameter tidak diketahui.</p>
+              </div>
+              <div class="guide-item">
+                <p class="guide-item__label">Sistem Skor</p>
+                <p class="guide-item__text">Setiap parameter memiliki bobot yang sama, yaitu 1 poin. Tingkat kecocokan dihitung menggunakan Multi-Criteria Scoring berdasarkan 10 parameter, kemudian ditampilkan sebagai persentase beserta 11 kandidat mineral dengan skor tertinggi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tentang ──────────────────────────────────── -->
+    <section class="section" id="tentang">
+      <div class="section__header section__header--center">
+        <h2>Tentang Proyek</h2>
+        <p>GeoMineral merupakan website identifikasi mineral yang menerapkan Multi-Criteria Scoring System untuk mengevaluasi tingkat kecocokan kandidat mineral berdasarkan sifat optik dan sifat fisik.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card__icon"><i class="ti ti-target"></i></div>
+          <h3>Fungsi Website</h3>
+          <p>GeoMineral dikembangkan sebagai media pembelajaran untuk membantu proses identifikasi mineral berdasarkan sifat optik dan sifat fisik secara lebih cepat, sistematis, dan mudah digunakan.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon"><i class="ti ti-device-analytics"></i></div>
+          <h3>Metode Identifikasi</h3>
+          <p>Menggunakan Multi-Criteria Scoring untuk mengevaluasi tingkat kecocokan setiap kandidat mineral berdasarkan parameter yang dimasukkan oleh pengguna.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon"><i class="ti ti-list-check"></i></div>
+          <h3>Cara Penggunaan</h3>
+          <p>Masukkan parameter sifat optik sebagai data utama, kemudian lengkapi sifat fisik jika tersedia. Setelah proses identifikasi dijalankan, sistem akan menampilkan kandidat mineral beserta persentase kecocokannya.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon"><i class="ti ti-math-function"></i></div>
+          <h3>Sistem Skor</h3>
+          <p>Persentase kecocokan dihitung berdasarkan jumlah parameter yang sesuai terhadap total 10 parameter utama. Kandidat mineral kemudian diurutkan dari persentase kecocokan tertinggi hingga terendah.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Referensi ────────────────────────────────── -->
+    <section class="section" id="referensi">
+      <div class="ref-grid">
+        <div>
+          <h2 class="ref-title">Referensi Akademik</h2>
+          <p class="ref-lead">Seluruh data sifat fisik, sifat optik, deskripsi, dan gambar mineral pada GeoMineral mengacu pada Mindat.org (Hudson Institute of Mineralogy) sebagai sumber referensi mineralogi yang digunakan untuk mendukung pembelajaran dan identifikasi mineral.</p>
+          <div class="ref-verified">
+            <i class="ti ti-certificate"></i>
+            <span>VERIFIED MINERAL DATA</span>
+          </div>
+        </div>
+        <div>
+          <div class="ref-item">
+            <span class="ref-num">01</span>
+            <div>
+              <h4>Mindat.org</h4>
+              <p>Hudson Institute of Mineralogy. (2024). Mindat.org: The Mineral and Locality Database. Retrieved from https://www.mindat.org</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+</main>
+
+<!-- ── Footer ──────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="navbar__icon"><i class="ti ti-diamond"></i></div>
+        <span class="navbar__logo">GeoMineral</span>
+      </div>
+      <p class="footer-desc">Sistem identifikasi mineral berbasis penilaian Multi-Criteria Scoring System.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 GeoMineral</span>
+    <span><strong>Developed by</strong> <strong class="text-accent">Kelompok 17 Geokomputasi</strong></span>
+  </div>
+</footer>
+
+<!-- ── Alert Modal ─────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" role="alertdialog" aria-modal="true" aria-labelledby="modal-message">
+    <div class="modal-box__icon"><i class="ti ti-alert-triangle"></i></div>
+    <p class="modal-box__label">Perhatian</p>
+    <p class="modal-box__message" id="modal-message"></p>
+    <button class="btn btn--primary btn--full" id="modal-ok-btn">Mengerti</button>
+  </div>
+</div>
+
+<!-- ── Scripts ──────────────────────────────────────── -->
+<script src="script.js"></script>
+
+</body>
+</html>
