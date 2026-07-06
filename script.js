@@ -1,15 +1,3 @@
-/**
- * GeoMineral — script.js
- * Sistem identifikasi mineral berbasis Rule-Based System
- * dengan pendekatan Multi-Filter Chaining.
- *
- * Alur kerja:
- *   1. Muat database mineral dari mineral.csv via PapaParse
- *   2. Kumpulkan input pengguna dari form
- *   3. Hitung skor kecocokan setiap mineral (0–10 parameter)
- *   4. Tampilkan kandidat teratas berdasarkan persentase kecocokan
- */
-
 "use strict";
 
 /* ═══════════════════════════════════════════════
@@ -144,7 +132,6 @@ function initSelectFeedback() {
 ═══════════════════════════════════════════════ */
 
 /**
- * Tampilkan modal peringatan bertema, menggantikan window.alert().
  * @param {string} message
  */
 function showAlert(message) {
@@ -253,8 +240,7 @@ function normalize(str) {
 ═══════════════════════════════════════════════ */
 
 /**
- * Gabungkan pasangan warna primer+sekunder dari CSV menjadi label
- * deskriptif (mis. "Hijau" + "Kuning" → "Hijau kekuningan").
+ *
  * @param {string} dbColor - Nilai warna dari CSV, dipisah "|"
  * @returns {string}
  */
